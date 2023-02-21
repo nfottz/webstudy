@@ -47,5 +47,70 @@
         </tfoot>
     </table>
 
+    <hr>
+
+    <table>
+        <tobdy>
+            <tr>
+                <td><img src="../../images/fruit1.jpg" title="베리" alt="베리" width = "200"></td>
+                <td><img src="../../images/fruit2.jpg" alt="아보카도" width = "200"></td>
+                <td><img src="../../images/fruit3.jpg" alt="바나나" width = "200"></td>
+            </tr>
+            <tr>
+                <td>10,000원<br><strong>베리</strong></td>
+                <td>20,000원<br><strong>아보카도</strong></td>
+                <td>30,000원<br><strong>바나나</strong></td>
+            </tr>
+        </tobdy>
+    </table>
+
+    <hr>
+
+    <!--  
+        셀 병합
+        1. <td> 태그의 속성으로 병합한다.
+        2. 병합 속성
+            1) colspan : 열 병합, 좌우 셀을 하나로 병합
+            2) rowspan : 행 병합, 상하 셀을 하나로 병합
+    -->
+
+    <!-- 열 병합 -->
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>1열</td>
+                <td>2열</td>
+                <td>3열</td>
+            </tr>
+            <tr>
+                <td>1열</td>
+                <td colspan="2">2~3열</td>
+            </tr>
+            <tr>
+                <td colspan="3">1~3열</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <!-- 행 병합 -->
+    <table border="1">
+        <tbody>
+            <tr>
+                <td>1행</td>
+                <td rowspan="2">1~2행</td>
+                <td rowspan="3">1~3행</td>
+            </tr>
+            <tr>
+                <td>2행</td>
+            </tr>
+            <tr>
+                <td>3행</td>
+                <td>3행</td>
+            </tr>
+        </tbody>
+    </table>
+
 </body>
 </html>
