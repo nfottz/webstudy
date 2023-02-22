@@ -13,11 +13,11 @@
             font-weight: 900;                           /* 디폴트 400, 100 ~ 900, 100 단위 */
             font-style: italic;                         /* italic : 기울임, none : 기울임 없애기 */
 
+            /* 블록 요소는 정렬이 된다. */
             text-align: center;                         /* 텍스트 정렬 : left, right, center, justify */
             text-decoration: underline;                 /* underline : 밑줄, line-through : 취소선, none : 선 없애기 */
             text-shadow: 5px -5px 1px lightgray;      /* 그림자 : x크기 y크기 blur 색상 */
         }
-
         pre {
             line-height: 32px;                          /* 행 높이 : 세로 가운데 정렬에서 주로 활용 */
             letter-spacing: -1px;                       /* 글자 간격 */
@@ -27,7 +27,6 @@
             color: #000000;
             color: rgba(0, 0, 0, 0.5);                /* alpha(투명도) : 0(투명) ~ 1(불투명) */
         }
-
         h1 {
             /*
                 벤더 프리픽스
@@ -41,6 +40,10 @@
             -webkit-text-stroke-color: gold;
             -webkit-text-stroke-width: 1px;
         }
+        a {
+            /* 인라인 요소는 정렬이 안된다. */
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -51,6 +54,8 @@
     <pre>You good?</pre>
 
     <h1>I'm fine!</h1>
+
+    <a>Contact Us</a>
 
 </body>
 </html>
