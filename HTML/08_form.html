@@ -158,6 +158,8 @@
         10. 버튼
             1) <button type="submit">텍스트</button> : 서브밋, type="submit" 생략 가능
             2) <input type="submit" value="텍스트">  : 서브밋
+            3) <input type="reset" value="텍스트">   : 입력 값을 초기화
+            4) <input type="button" value="텍스트">  : 아무 일도 안하는 버튼, 직접 할 일을 지정해 줘야 함
     -->
     <p>
         <form action="01_overview.html">
@@ -171,7 +173,22 @@
             <br>
             <input type="submit" value="전송">
             <button type="submit">전송</button>
+            <input type="reset" value="입력초기화">
+            <input type="button" value="일반버튼" onclick="alert('호호호')">
         </form>
+    </p>
+
+    <!-- 11. 입력 요소의 그룹 : <fieldset> 태그 -->
+    <p>
+        <fieldset>
+            <legend>성별</legend>
+            <label for="male">
+                <input type="radio" name="gender" value="male" id="male">남
+            </label>
+            <label for="female">
+                <input type="radio" name="gender" value="female" id="female">여
+            </label>
+        </fieldset>
     </p>
 
 </body>
