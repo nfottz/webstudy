@@ -64,6 +64,125 @@
             </tbody>
         </table>
     </div>
-
+    
+    <hr>
+    
+    <style>
+        .title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 900;
+        }
+        .month {
+            font-size: 60px;
+            color: mediumblue;
+        }
+        .wrap2 > table {
+            width: 560px;
+            border: 1px solid gray;
+            border-collapse: collapse;
+            margin: auto;
+        }
+        .wrap2 > table > thead td {
+            text-align: center;
+            vertical-align: middle;
+            height: 30px;
+            font-size: 15px;
+        }
+        .wrap2 > table td {
+            border: 1px solid gray;
+        }
+        .wrap2 > table td:nth-of-type(n){
+            width: 80px;
+        }
+        .wrap2 > table > tbody td {
+            box-sizing: border-box;
+            height: 80px;
+            vertical-align: top;
+            padding: 5px;
+            font-size: 15px;
+        }
+        .wrap2 > table > tbody td:hover {
+            background-color: navajowhite;
+            border: 1.5px solid darkorange;
+        }
+        .holiday {
+            color: red;
+        }
+        .sat {
+            color: blue;
+        }
+        .next {
+            color: gray;
+        }
+    </style>
+    
+    <div class="title">
+        2023
+        <span class="month"> 1</span>
+        January
+    </div>
+    <div class="wrap2">
+        <table>
+            <thead>
+                <tr>
+                    <td class="holiday">SUN</td>
+                    <td>MON</td>
+                    <td>TUE</td>
+                    <td>WED</td>
+                    <td>THU</td>
+                    <td>FRI</td>
+                    <td class="sat">SAT</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="holiday">1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td class="sat">7</td>
+                </tr>
+                <tr>
+                    <td class="holiday">8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td class="sat">14</td>
+                </tr>
+                <tr>
+                    <td class="holiday">15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                    <td>19</td>
+                    <td>20</td>
+                    <td class="holiday">21</td>
+                </tr>
+                <tr>
+                    <td class="holiday">22</td>
+                    <td class="holiday">23</td>
+                    <td class="holiday">24</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>27</td>
+                    <td class="sat">28</td>
+                </tr>
+                <tr>
+                    <td class="holiday">29</td>
+                    <td>30</td>
+                    <td>31</td>
+                    <td class="next">1</td>
+                    <td class="next">2</td>
+                    <td class="next">3</td>
+                    <td class="next">4</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
