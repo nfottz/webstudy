@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+        /* CSS 초기화 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        a, a:active, a:hover {
+            text-decoration: none;
+            color: dimgray;
+        }
+
+        /* main */
+        .screen_out {
+            display: none;
+        }
+        .container-doc {
+            display: flex;
+            justify-content: center;
+        }
+        .content-article {
+            width: 580px;
+            height: 100%;
+            border: 1px solid lightgray;
+        }
+        .logo_kakao {
+            display: block;
+            width: 88px;
+            height: 27px;
+            margin: 50px auto;
+            background: white url("../../images/logo_kakao.png") no-repeat 0 0;
+            background-size: 100px 80px;
+            font-size: 19px;
+            line-height: 27px;
+            text-align: center;
+        }
+        .logo_kakao span {
+            display: none;
+        }
+        .doc-main input[type="text"] {
+            border: 0;
+            border-bottom: 2px solid lightgray;
+            outline: 0;
+            width: 95%;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+        .doc-main input[type="password"] {
+            border: 0;
+            border-bottom: 2px solid lightgray;
+            outline: 0;
+            width: 95%;
+            padding-left: 20px;
+            font-size: 16px;
+        }
+        .cont_login {
+            padding: 50px 50px;
+        }
+        .info_user {
+            color: black;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+        }
+        ul {
+            width: 35%;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+        }
+        .confirm_btn {
+            text-align: center;
+        }
+        .line_or {
+            color: lightgray;
+        }
+        
+        .btn_g {
+            width: 100%;
+            border: none;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 7px;
+        }
+        button[type="submit"] {
+            background-color: rgb(255, 240, 107);
+        }
+        .line_or > .txt_or {
+            color: dimgray;
+            font-size: 13px;
+        }
+
+        /* footer */
+        .doc-footer {
+            text-align: center;
+            color: lightgray;
+            font-size: 13px;
+        }
+        select {
+            border: none;
+            color: dimgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-doc">
+        <div class="inner-container">
+            <main class="doc-main">
+                <div class="doc-title">
+                    <h1 class="tit_service">
+                        <span class="logo_kakao">
+                            <span>Kakao</span>
+                        </span>
+                    </h1>    
+                </div>
+                <article class="content-article">
+                    <div class="cont_login">
+                        <div class="login_kakaomail">
+                            <form>
+                                <div class="box_tf fst">
+                                    <label class="screen_out" for="loginKey--1">계정정보 입력</label>
+                                    <input type="text" name="" id="loginKey--1" placeholder="카카오메일 아이디, 이메일, 전화번호">
+                                </div>
+                                <div class="box_tf">
+                                    <label class="screen_out" for="password--2">비밀번호 입력</label>
+                                    <input type="password" name="" id="password--2" placeholder="비밀번호">
+                                </div>
+                                <div class="set_login">
+                                    <div class="item_choice">
+                                        <input type="checkbox" id="staySignedIn--3" class="inp_choice" name="staySignedIn" value="false">
+                                        <label for="staySignedIn--3" id="label-staySignedIn">
+                                            <span class="ico_comm ico_check"></span>
+                                            로그인 상태 유지
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="confirm_btn">
+                                    <button type="submit" class="btn_g highligt submit">로그인</button>
+                                    <span class="line_or">
+                                        ─────────────
+                                        <span class="txt_or">&nbsp;또는&nbsp;</span>
+                                        ─────────────
+                                    </span>
+                                    <button type="button" class="btn_g">QR코드 로그인</button>
+                                    </div>
+                            </form>
+                            <div class="info_user">
+                                <a href="javascript:void(0)" class="link_join">회원가입</a>
+                                <ul class="list_user">
+                                    <li>
+                                        <a href="javascript:void(0)" class="link_user">계정 찾기</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:void(0)" class="link_user">비밀번호 찾기</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </main>
+            <footer class="doc-footer">
+                <strong class="screen_out">서비스 이용정보</strong>
+                <div class="service_info">
+                    <a href="javascript:void(0)" class="link_info">이용약관</a>
+                    <a href="javascript:void(0)" class="link_info"><strong>개인정보 처리방침</strong></a>
+                    <a href="javascript:void(0)" class="link_info">운영정책</a>
+                    <a href="javascript:void(0)" class="link_info">고객센터</a>
+                    <a href="javascript:void(0)" class="link_info">공지사항</a>
+                    <label for="language">
+                        <select name="language" id="language">
+                            <option value="kor">한국어</option>
+                            <option value="eng">English</option>
+                            <option value="jap">日本語</option>
+                        </select>
+
+                    </label>
+                </div>
+                <small class="txt_copyright">
+                    Copyright ©
+                    <a class="link_kakaocorp" href="javascript:void(0)">Kakao Corp.</a>
+                    All rights reserved.
+                </small>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

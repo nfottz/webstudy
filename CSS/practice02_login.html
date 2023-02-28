@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css');
+        body {
+            background-color: beige;
+        }
+        .wrap {
+            width: 500px;
+        }
+        .login_wrap {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .left_wrap {
+            width: 70%;
+        }
+        .right_wrap {
+            width: 28%;
+        }
+        .id_wrap {
+            display: flex;
+            height: 60px;
+            border: 1.5px solid rgb(160, 160, 160);
+            border-radius: 8px 0px;
+            margin-bottom: 10px;
+            line-height: 60px;
+        }
+        .pw_wrap {
+            display: flex;
+            height: 60px;
+            border: 1.5px solid rgb(160, 160, 160);
+            border-radius: 8px 0px;
+            line-height: 60px;
+        }
+        .icon_wrap {
+            background-color: rgb(160, 160, 160);
+            width: 60px;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 6px 0px 0px 0px;
+            font-size: 23px;
+        }
+        .input_wrap {
+            width: 100%;
+            border-radius: 0 0 8px 0;
+            background-color: white;
+            padding-left: 15px;
+        }
+        .wrap input {
+            border: 0px;
+            font-size: 17px;
+        }
+        .wrap button {
+            width: 100%;
+            height: 100%;
+            background-color: rgb(160, 160, 160);
+            border: 0px;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+        .wrap button:hover {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="wrap">
+        <form method="post" action="/">
+            <div class="login_wrap">
+                <div class="left_wrap">
+                    <div class="id_wrap">
+                        <div class="icon_wrap">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <div class="input_wrap">
+                            <input type="text" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="pw_wrap">
+                        <div class="icon_wrap">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+                        <div class="input_wrap">
+                            <input type="password" placeholder="●●●●">
+                        </div>
+                    </div>
+                </div>
+                <div class="right_wrap">
+                    <button type="submit">로그인</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
