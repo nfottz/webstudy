@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="box1"></div>
+    <script>
+        // (태그) 내부 텍스트 : textContent
+        var box1 = document.getElementById('box1');
+        box1.textContent = 'Hello World';
+    </script>
+
+    <div id="box2"><p>문단</p></div>
+    <script>
+        // textContent는 태그를 제외한 내부 텍스트만을 의미한다.
+        var box2 = document.getElementById('box2');
+        console.log(box2.textContent);
+    </script>
+
+    <div id="box3"></div>
+    <script>
+        // 내부 HTML 요소 : innerHTML
+        var box3 = document.getElementById('box3');
+        box3.innerHTML = '<p>문단</p>';
+    </script>
+
+    <ul id="season"></ul>
+    <script>
+        // 내부 요소 추가를 위해서 + 연산자를 사용할 수 있다.
+        var season = document.getElementById('season');
+        season.innerHTML += '<li>봄</li>';
+        season.innerHTML += '<li>여름</li>';
+        season.innerHTML += '<li>가을</li>';
+        season.innerHTML += '<li>겨울</li>';
+    </script>
+
+    <div id="box4">Hello World</div>
+    <script>
+        /*
+            CSS 적용하기
+            1. style 속성을 이용한다.
+            2. inline 방식으로 CSS가 적용된다. (JavaScript를 이용한 CSS는 우선순위가 가장 높다.)
+            3. CSS 속성 적용 방식
+                1) 마침표 : CSS 속성에서 하이픈(-)을 제거한 뒤 camelCase 방식의 이름으로 바꿔서 사용한다.
+                2) 대괄호 : CSS 속성을 문자열 형식으로 그대로 사용한다.
+            4. 작성 예시
+                1) 마침표 : dom.style.fontSize = '12px';
+                2) 대괄호 : dom.style['font-size'] = '12px';
+        */
+       var box4 = document.getElementById('box4');
+       box4.style.color = '#cccccc';
+       box4.style['color'] = '#030303';
+    </script>
+
+</body>
+</html>
