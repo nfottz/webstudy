@@ -57,5 +57,62 @@
        box4.style['color'] = '#030303';
     </script>
 
+    <div id="box5" class="box5">Hello World</div>
+    <script>
+        /* 
+            attribute
+            1. 태그에 명시된 속성
+            2. get/set 메소드를 이용해서 attribute를 사용한다.
+            3. 메소드
+                1) 속성 확인하기 : getAttribute('속성명')
+                2) 속성 변경하기 : setAttribute('속성명', '값')
+        */
+       var box5 = document.getElementById('box5');
+       console.log(box5.getAttribute('id'));
+       console.log(box5.getAttribute('class'));
+       box5.setAttribute('id', 'box5-1');
+       box5.setAttribute('class', 'box5-1');
+    </script>
+
+    <div id="box6" class="box6">Hello World</div>
+    <script>
+        /*
+            property
+            1. 객체가 가지는 속성
+            2. 마침표(.)를 이용해서 property를 사용한다.
+            3. property 확인하는 방법
+                개발자 도구 - Elements탭 - Properties탭
+        */
+       var box6 = document.getElementById('box6');
+       console.log(box6.id);
+       console.log(box6.className);
+       box6.id = 'box6-1';
+       box6.className = 'box6-1';
+    </script>
+
+    <div>
+        <input id="inp" type="text" value="Hello World" readonly="readonly">
+    </div>
+    <script>
+        var inp = document.getElementById('inp');
+        // inp.removeAttribute('readonly');
+        inp.readOnly = false;
+    </script>
+
+    <style>
+        .red_text {
+            color: red;
+        }
+        .blue_text {
+            color: blue;
+        }
+    </style>
+    <div id="box7" class="red_text">Hello World</div>
+    <script>
+        var box7 = document.getElementById('box7');
+        // box7.style.color = 'blue';
+        // box7.className = 'blue_text';
+        box7.setAttribute('class', 'blue_text');
+    </script>
 </body>
 </html>
