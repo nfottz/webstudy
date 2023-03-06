@@ -235,5 +235,46 @@
 
     </script>
 
+
+
+    <!-- 복습 -->
+
+    <script>
+
+        // fnGetList();
+
+        // function fnGetList(){   // 선언 함수(호이스팅)
+        //     alert('하하하');
+
+        // }
+
+        // function fnGetList(){   // 선언 함수(호이스팅)
+        //     alert('호호호');
+
+        // }
+
+        // fnGetList();
+
+    </script>
+
+    <script>
+
+        // var f = function() {
+        //     alert('하하하');
+        // }
+        
+        // var f = () => {
+        //     alert('호호호');
+        // }
+        // f();
+
+        function fnGetList(data){
+            data();
+        }
+
+        fnGetList(function(){alert('하하하');});
+
+    </script>
+
 </body>
 </html>
