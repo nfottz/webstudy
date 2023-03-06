@@ -27,9 +27,14 @@
             'age': 30
         };
 
-        // 객체 <-> JSON(문자열) 변환하기
-        JSON.stringify(person);
-
+        // 객체 -> JSON(문자열) 변환하기
+        var strJSON = JSON.stringify(person);
+        console.log(strJSON, typeof strJSON);
+        
+        // JSON(문자열) -> 객체 변환하기
+        var obj = JSON.parse(strJSON);
+        console.log(obj, typeof obj);
+        
     </script>
 
 </body>
