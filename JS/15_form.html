@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 1. <button>을 이용한 submit -->
+    <div>
+        <form id="frm_daum" action="https://search.daum.net/search" method="get">
+            <input id="q" type="text" name="q">
+            <button type="submit">다음검색</button>
+        </form>
+    </div>
+    <script>
+
+        // 이벤트 타입 : submit
+        // 이벤트 대상 : <form></form>
+
+        // submit 이벤트 등록
+        // 1. 고전 이벤트 : 문서객체.onsubmit = function(){}
+        // 2. 표준 이벤트 : 문서객체.addEventListener('submit', function(){})
+
+        // 이벤트 대상
+        var frmDaum = document.getElementById('frm_daum');
+        
+        // 검색어 입력란
+        var q = document.getElementById('q');
+
+        // 이벤트 등록(고전 이벤트)
+        frmDaum.onsubmit = function(event){
+            if(q.value == ''){
+                alert('검색어가 입력되지 않았습니다.');
+                q.focus();               // 검색어 입력란에 자동으로 커서를 보냄
+                event.preventDefault();  // submit 방지
+                return;                  // 이벤트 종료(이벤트 리스너의 종료)
+            }
+        };
+
+        // 이벤트 등록(표준 이벤트)
+        frmDaum.addEventListener('submit', function(){
+
+        });
+        
+    </script>
+
+    <!-- 2. <input type="submit">을 이용한 submit -->
+    <div>
+        <form id="frm_google" action="https://www.google.com/search" method="get">
+            <input id="q2" type="text" name="q">     <!-- id: 스크립트 / name: 서버 에서 사용 -->
+            <input type="submit" value="구글검색">
+        </form>
+    </div>
+
+    <script>
+
+        // 검색어 입력란
+        var gq = document.getElementById('q2');
+        
+        // 이벤트 대상
+        var frmGoogle = document.getElementById('frm_google');
+
+        // 이벤트 등록(표준 이벤트)
+        frmGoogle.addEventListener('submit', function(event){
+            if(gq.value == '') {
+                event.preventDefault();
+                return;
+            }
+        });
+
+    </script>
+
+    <!-- 3. <input type="button">을 이용한 submit -->
+    <div>
+        <form id="frm_naver" action="https://search.naver.com/search.naver" method="get">
+            <input id="query" type="text" name="query">
+            <input id="btn_naver" type="button" value="네이버검색">
+        </form>
+    </div>
+    <script>
+
+        // 검색어 입력란
+        var query = document.getElementById('query');
+
+        // 검색 폼
+        var frmNaver = document.getElementById('frm_naver');
+
+        // 검색 버튼
+        var btnNaver = document.getElementById('btn_naver');
+
+        // click 이벤트 등록(고전 이벤트)
+        btnNaver.onclick = function(event){
+            if(query.value == ''){
+                event.preventDefault(); // <input type="button"> 버튼을 클릭하면 어떤 일이 일어나는가? 아무 일도 안한다.
+                                        // 원래 하는 일이 없기 때문에 event.preventDefault()는 의미없는 코드가 된다.
+                return;                 // retrun은 이벤트 리스너를 종료시키는 역할을 하므로
+                                        // 이후에 나타난 submit 실행 코드의 실행을 막을 수 있다.
+            }
+            frmNaver.submit();
+        }
+
+    </script>
+
+</body>
+</html>
