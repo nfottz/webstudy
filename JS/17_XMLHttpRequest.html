@@ -161,6 +161,7 @@
             xhr.addEventListener('readystatechange', () => {
                 if(xhr.readyState == xhr.DONE && xhr.status == 200){
                     var data = JSON.parse(xhr.responseText);
+                    console.log(data);
                     var str = '';
                     for(let i = 0; i < data.length; i++){
                         str += '<div class="product">';
@@ -211,5 +212,46 @@
             });
         });
     </script>
+
+    <!-- 연습2. book.json 읽어서 화면에 표시하기 -->
+    <div>
+        <input type="button" id="btn_get_book" value="책정보가져오기">
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>제목</td>
+                    <td>저자</td>
+                    <td>가격</td>
+                </tr>
+            </thead>
+            <tbody id="book_body"></tbody>
+        </table>
+    </div>
+    <script>
+        document.getElementById('btn_get_book').addEventListener('click', () => {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', 'book.json', true);
+            xhr.send();
+            xhr.addEventListener('readystatechange', () => {
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    var data = JSON.parse(xhr.responseText);
+                    var bookList = data.books;
+                    var str = '';
+                    for(let i = 0; i < bookList.length; i++){
+                        str += '<tr>';
+                        str += '<td>' + bookList[i].title + '</td>';
+                        str += '<td>' + bookList[i].author + '</td>';
+                        str += '<td>' + bookList[i].price + '</td>';
+                        // for(let p in bookList[i]){
+                        //     str += '<td>' + bookList[i][p] + '</td>';
+                        // }
+                        str += '</tr>';
+                    }
+                    document.getElementById('book_body').innerHTML = str;
+                };
+            });
+        });
+    </script>
+
 </body>
 </html>
