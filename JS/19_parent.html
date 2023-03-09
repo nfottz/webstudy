@@ -24,7 +24,7 @@
             var child = null;
 
             // 창 여는 함수
-            function fnOpenChild(url, name){
+            function fnOpenChild(url, target){
                 // 화면 중앙에 창 열기
                 const width = 480;
                 const height = 320;
@@ -34,7 +34,7 @@
                                 + ', left=' + left + ', top=' + top;
                 //창이 열려 있다면 열지 않기
                 if(child == null || child.closed){
-                    child = window.open(url, name, feature);
+                    child = window.open(url, target, feature);
                 }
             }
 
@@ -42,7 +42,7 @@
             function fnSendtoChild(){
                 // child의 모든 구성요소를 인식할 수 있다.
                 child.onload = () => {
-                    child.document.getElementById('msg').textContent = msg.value;
+                    child.document.getElementById('recieve_msg').textContent = msg.value;
                 }
             }
 
@@ -56,11 +56,14 @@
     </script>
 
     <div>
-
         <label for="msg">보낼 메시지</label>
         <input type="text" id="msg">
         <input type="button" id="btn_send" value="메시지전송">
+    </div>
 
+    <div>
+        <div>받은 메시지</div>
+        <div id="recieve_msg"></div>
     </div>
 
 </body>
