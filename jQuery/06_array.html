@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    
+    <script>
+
+        $(function(){
+            var fourSeason = ['spring', 'summer', 'autumn', 'winter'];
+            var str = '';
+            $.each(fourSeason, (i, element) => {
+                str += '<div>' + i + ', ' + element + '</div>';
+            })
+            $('#box1').append(str);
+        });
+
+    </script>
+    <div id="box1"></div>
+
+    <script>
+
+        // $(function(){
+        //     var fourSeason = ['spring', 'summer', 'autumn', 'winter'];
+        //     var str = '<select name="season">';
+        //     $.each(fourSeason, (i, element) => {
+        //         str += '<option value="' + (i + 1) + '">' + element + '</option>';
+        //     })
+        //     str += '</select>';
+        //     $('#box2').append(str);
+        // })
+
+        $(function(){
+            var fourSeason = ['spring', 'summer', 'autumn', 'winter'];
+            var select = $('<select>').attr('name', 'season');
+            $.each(fourSeason, (i, element) => {
+                $('<option>').val(i + 1).text(element).appendTo(select);
+                // select.append($('<option>').val(i + 1).text(element));
+            });
+            $('#box2').append(select);
+        })
+
+    </script>
+    <div id="box2"></div>
+
+    <script>
+
+        $(() => {
+            var siteList = [
+                {
+                    'name' : '네이버',
+                    'url' : 'https://www.naver.com',
+                    'target' : '_blank'
+                },
+                {
+                    'name' : '카카오',
+                    'url' : 'https://www.kakao.com',
+                    'target' : '_self'
+                }
+            ];
+            var box3 = $('#box3');
+            $.each(siteList, (i, element) => {
+                box3.append($('<a>').attr('href', element.url).attr('target', element.target).text(element.name));
+            });
+        });
+
+    </script>
+    <div id="box3"></div>
+
+</body>
+</html>
