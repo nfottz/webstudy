@@ -66,7 +66,29 @@
         <button id="btn3">XML 요청2</button>
     </div>
     <script>
-        $('btn3').on()
+        $('btn3').on('click', function(){
+            $.ajax({
+                type: 'get',
+                url: 'product2.xml',
+                async: true,
+                dataType: 'xml',
+                success: function(data){
+                    var porductList = $(data).find('product');
+                    $.each(productList, (i, product) => {
+                        var ul = $('<ul>');
+                        ul.append($('<li>').text($(product).attr('model')));
+                        ul.append($('<li>').text($(product).attr('maker')));
+                        ul.append($('<li>').text($(product).attr('price')));
+                        console.log(ul);    
+                        $('#box3').append(ul);
+                    })
+                },
+                error: function(jqXHR){
+                    $('#box3').append($('<div>').text(jqXHR.status));
+                    $('#box3').append($('<div>').text(jqXHR.statusText));
+                }
+            })
+        })
     </script>
 
 </body>
