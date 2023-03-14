@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../resources/js/lib/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    
+    <div id="box1">
+        <button id="btn1">텍스트 응답 처리</button>
+    </div>
+    <script>
+        $('#btn1').on('click', function(){
+            $.ajax({
+                // 요청
+                type: 'get',         // HTTP Method(GET, POST)
+                url: 'product.txt',  // URL (서버 경로)
+                async: true,         // 비동기(true, 생략 가능), 동기(false)
+                // 응답
+                dataType: 'text',         // 응답 데이터의 타입(text, xml, json 등)
+                success: function(data){  // 매개변수 data로 응답 데이터가 자동 전달된다.(responseText, responseXML 등)
+                    // $('#btn1').after('<div>' + data + '</div>');
+                    $('#box1').append($('<div>').text(data));
+                },
+                error: function(jqXHR){   // 매개변수 jqXHR로 에러 정보가 자동 전달된다.
+                    $('#box1').append($('<div>').text(jqXHR.status));       // 응답코드(404)
+                    $('#box1').append($('<div>').text(jqXHR.statusText));   // 응답코드텍스트(Not Found)
+                    $('#box1').after(jqXHR.responseText);                   // 응답텍스트(서버가 전송한 예외메시지)
+                }
+            });
+        });
+    </script>
+
+    <div id="box2">
+        <button id="btn2">XML 요청1</button>
+    </div>
+    <script>
+        $('#btn2').on('click', function(){
+            $.ajax({
+                type: 'GET',
+                url: 'product1.xml',
+                async: true,
+                dataType: 'xml',
+                success: function(data){    // var data = xhr.responseXML;
+                    var productList = $(data).find('product');
+                    $.each(productList, (i, product) => {
+                        var ul = $('<ul>');
+                        ul.append($('<li>').text($(product).find('model').text()));
+                        ul.append($('<li>').text($(product).find('maker').text()));
+                        ul.append($('<li>').text($(product).find('price').text()));
+                        $('#box2').append(ul);
+                    })
+                },
+                error: function(jqXHR){
+                    $('#box2').append($('<div>').text(jqXHR.status));
+                    $('#box2').append($('<div>').text(jqXHR.statusText));
+                }
+            })      
+        });
+    </script>
+
+    <div id="box3">
+        <button id="btn3">XML 요청2</button>
+    </div>
+    <script>
+        $('btn3').on()
+    </script>
+
+</body>
+</html>
