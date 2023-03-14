@@ -11,7 +11,94 @@
     
     <div id="box1"></div>
     <script>
-        $('#box1')
+
+        // 초기 이미지와 버튼
+        $('#box1').html($('<img>').attr('id', 'light').attr('src', '../../images/light1.png').attr('width', '100px'));
+        $('#box1').append($('<button>').attr('id', 'btn1').text('OFF').data('state', '0'));
+
+        $('#btn1').click(function(event){
+            /* 이벤트 대상(target) 1) event.target 2) this */
+            
+            //btn1에 data-state = '0'이면 OFF, data-state = '1'이면  ON으로 처리한다.
+            if($(this).data('state') == 0){
+                $('#light').attr('src', '../../images/light2.png');
+                $(this).data('state', '1').text('ON');
+            } else{
+                $('#light').attr('src', '../../images/light1.png');
+                $(this).data('state', '0').text('OFF');
+            }
+        });
+        
+    </script>
+
+    <hr>
+
+    <div id="box2">
+        <button id="btn_prev" class="btn_move" data-value="-1">이전</button>
+        <span id="image_no"></span>
+        <button id="btn_next" class="btn_move" data-value="1">다음</button>
+    </div>
+    <div id="image_box">
+
+    </div>
+    <style>
+        #image_box {
+            width: 480px;
+            height: 320px;
+            background-size: 480px 320px;
+            background-repeat: no-repeat;
+        }
+        .btn_move:hover {
+            background-color: orchid;
+        }
+    </style>
+    <script>
+
+        // 전역 배열 및 인덱스(모든 함수에서 사용할 수 있다.)
+        var imageList = ['animal1.jpg', 'architecture1.jpg', 'flower1.jpg', 'fruit1.jpg', 'nature1.jpg'];
+        var i = 0;
+
+        // 이미지와 번호를 표시하는 함수
+        function fnImageDisplay(){
+            $('#image_box').css('background-image', 'url(../../images/'+imageList[i]+')');
+            $('#image_no').text(i + 1 + ' / ' + imageList.length);
+        }
+
+        // 이미지 변경 함수
+        function fnImageSlide(n){
+            i += n;
+            i %= imageList.length;
+            if(i == -1) i = imageList.length - 1;
+            fnImageDisplay();
+        }
+
+        /*
+        // 이전 버튼 click 이벤트
+        $('#btn_prev').click(function(event){
+            fnImageSlide(-1);
+        })
+
+        // 다음 버튼 click 이벤트
+        $('#btn_next').click(function(event){
+            fnImageSlide(1);
+        })
+
+
+        // 이동 버튼의 click 이벤트
+        $('.btn_move').click(function(event){
+            if($(this).text() == '이전') fnImageSlide(-1);
+            else fnImageSlide(1);
+        })
+        */
+
+        // 이동 버튼의 click 이벤트(data- 속성 활용하기)
+        $('.btn_move').click(function(event){
+            fnImageSlide($(this).data('value'));
+        })
+
+        // 함수 호출
+        fnImageDisplay();
+
     </script>
 
 </body>
