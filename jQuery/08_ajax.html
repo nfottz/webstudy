@@ -66,20 +66,19 @@
         <button id="btn3">XML 요청2</button>
     </div>
     <script>
-        $('btn3').on('click', function(){
+        $('#btn3').on('click', function(){
             $.ajax({
-                type: 'get',
+                type: 'GET',
                 url: 'product2.xml',
                 async: true,
                 dataType: 'xml',
                 success: function(data){
-                    var porductList = $(data).find('product');
+                    var productList = $(data).find('product');
                     $.each(productList, (i, product) => {
                         var ul = $('<ul>');
                         ul.append($('<li>').text($(product).attr('model')));
                         ul.append($('<li>').text($(product).attr('maker')));
                         ul.append($('<li>').text($(product).attr('price')));
-                        console.log(ul);    
                         $('#box3').append(ul);
                     })
                 },
@@ -87,6 +86,136 @@
                     $('#box3').append($('<div>').text(jqXHR.status));
                     $('#box3').append($('<div>').text(jqXHR.statusText));
                 }
+            })
+        })
+    </script>
+
+    <div id="box4">
+        <button id="btn4">JSON 요청</button>
+    </div>
+    <script>
+        $('#btn4').on('click', function(){
+            $.ajax({
+                type: 'GET',
+                url: 'product.json',
+                async: true,
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                    $.each($(data), (i, product) => {
+                        var ul = $('<ul>');
+                        ul.append($('<li>').text(product.model));
+                        ul.append($('<li>').text(product.maker));
+                        ul.append($('<li>').text(product.price));
+                        $('#box4').append(ul);
+                    })
+                },
+                error: function(jqXHR){
+                    $('#box4').append($('<div>').text(jqXHR.status));       // 응답코드(404)
+                    $('#box4').append($('<div>').text(jqXHR.statusText));   // 응답코드텍스트(Not Found)
+                    $('#box4').after(jqXHR.responseText);                   // 응답텍스트(서버가 전송한 예외메시지)
+                }
+            })
+        })
+    </script>
+
+    <div id="box5">
+        <button id="btn5">book.xml 조회하기</button>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>제목(title)</td>
+                    <td>썸네일(image+link)</td>
+                    <td>저자(author)</td>
+                    <td>할인가(discount)</td>
+                    <td>출판사(publisher)</td>
+                    <td>출판일(pubdate)</td>
+                    <td>ISBN(isbn)</td>
+                    <td>개요(description)</td>
+                </tr>
+            </thead>
+            <tbody id="tbody1"></tbody>
+        </table>
+    </div>
+    <script>
+        $('#btn5').on('click', function(data){
+            $.ajax({
+                type: 'get',
+                url: 'book.xml',
+                async: true,
+                dataType: 'xml',
+                success: function(data){
+                    $('#tbody1').empty();
+                    var bookList = $(data).find('item');
+                    $.each(bookList, (i, book) => {
+                        var tr = $('<tr>');
+                        tr.append($('<td>').text($(book).find('title').text()));
+                        tr.append($('<td>').html($('<a>').attr('href', $(book).find('link').text()).attr('target', '_blank').
+                                            html($('<img>').attr('src', $(book).find('image').text()).attr('width', '100'))));
+                        tr.append($('<td>').text($(book).find('author').text()));
+                        tr.append($('<td>').html($('<span>').text($(book).find('discount').text() + '원').css('color', 'red')));
+                        tr.append($('<td>').text($(book).find('publisher').text()));
+                        tr.append($('<td>').text($(book).find('pubdate').text()));
+                        tr.append($('<td>').text($(book).find('isbn').text()));
+                        tr.append($('<td>').text($(book).find('description').text()));
+                        $('#tbody1').append(tr);
+                    })
+                },
+                error: function(jqXHR){
+                    $('#box5').append($('<div>').text(jqXHR.status));       // 응답코드(404)
+                    $('#box5').append($('<div>').text(jqXHR.statusText));   // 응답코드텍스트(Not Found)
+                    $('#box5').after(jqXHR.responseText);                   // 응답텍스트(서버가 전송한 예외메시지)
+                }
+            })
+        })
+    </script>
+
+    <div id="box6">
+        <button id="btn6">book.json 조회하기</button>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>제목(title)</td>
+                    <td>썸네일(image+link)</td>
+                    <td>저자(author)</td>
+                    <td>할인가(discount)</td>
+                    <td>출판사(publisher)</td>
+                    <td>출판일(pubdate)</td>
+                    <td>ISBN(isbn)</td>
+                    <td>개요(description)</td>
+                </tr>
+            </thead>
+            <tbody id="tbody2"></tbody>
+    </div>
+    <script>
+        $('#btn6').on('click', function(){
+            $.ajax({
+                type: 'get',
+                url: 'book.json',
+                async: true,
+                dataType: 'json',
+                success: function(data){
+                    $('#tbody2').empty();
+                        console.log(data);
+                    $.each(data.items, (i, book) => {
+                        var tr = $('<tr>');
+                        tr.append($('<td>').text(book.title));
+                        tr.append($('<td>').html($('<a>').attr('target', '_blank').attr('href', book.link)
+                                            .html($('<img>').attr('src', book.image).attr('width', '100'))));
+                        tr.append($('<td>').text(book.author));
+                        tr.append($('<td>').html($('<span>').css('color', 'red').text(book.discount + '원')));
+                        tr.append($('<td>').text(book.publisher));
+                        tr.append($('<td>').text(book.pubdate));
+                        tr.append($('<td>').text(book.isbn));
+                        tr.append($('<td>').text(book.description));
+                        $('#tbody2').append(tr);
+                    })
+                },
+                error: function(jqXHR){
+                    $('#box6').append($('<div>').text(jqXHR.status));       // 응답코드(404)
+                    $('#box6').append($('<div>').text(jqXHR.statusText));   // 응답코드텍스트(Not Found)
+                    $('#box6').after(jqXHR.responseText);                   // 응답텍스트(서버가 전송한 예외메시지)
+                }                
             })
         })
     </script>
